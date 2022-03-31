@@ -1,5 +1,7 @@
 
 
+
+1, 2, 3, 4, 5, 6, 7, 8, 
 function divide(array, leftIndex, rightIndex){
     if(leftIndex>=rightIndex){
         // stop dividing, array has just one element.
@@ -9,33 +11,41 @@ function divide(array, leftIndex, rightIndex){
     // 0+parseInt((0-8)/2)=> 0+3 => 3
     // 4+ (4-6)/2 => 4+parseInt((4-6)/2) => 4+1 => 5
     var mediumIndex = leftIndex+ parseInt((rightIndex-leftIndex)/2);
-    divide(array, leftIndex, mediumIndex); // left array
-    divide(array, mediumIndex+1, rightIndex); // right array
+    divide(array, leftIndex, mediumIndex); // left array n/2
+    divide(array, mediumIndex+1, rightIndex); // right array n/2
     merge(array, leftIndex, mediumIndex, rightIndex);
 }
 
-    // 0, 3, 6 =>
 function merge(array, left, medium, right){
+    console.log("\n=============\n")
+    for(let n=left; n<=right; n++){
+        console.log(array[n]);
+    }
    
-    var leftArraySize = medium-left+1; // 3-0+1 => 4
-    var rightArraySize =right-medium; //6-3 =3
+    console.log("left: "+left);
+    console.log("medium: "+medium);
+    console.log("right: "+right);
+
+    var leftArraySize = medium-left+1;
+    var rightArraySize =right-medium; 
     var leftArray = new Array(leftArraySize);
     var rightArray = new Array(rightArraySize);
 
-    // [2, 3, 4, 5, 6] -> 0, 2, 4   - > Size (3), (2)
     // Create left and right array.
     for(var i=0; i<leftArraySize; i++){
-        leftArray[i]=array[left+i]; //2, 3, 4
+        leftArray[i]=array[left+i]; 
+    }
+    console.log("Left Array: "+leftArray);
+    for(var j=0; j<rightArraySize; j++){ 
+        rightArray[j]=array[medium+1+j]; 
     }
 
-    for(var j=0; j<rightArraySize; j++){ 
-        rightArray[j]=array[medium+1+j]; // 5, 6
-    }
+    console.log("Right Array: "+rightArray);
 
     // Merge and Sort
+    // 2i,7,13   // 3j,94   //  2,3,7
     i=0, j=0;
     var k=left;
-    // 2,3,4, i   // 5j,6     // 2,3,4
     while(i<leftArraySize && j<rightArraySize){
         if(leftArray[i]<=rightArray[j]){
             array[k]=leftArray[i];
@@ -46,22 +56,24 @@ function merge(array, left, medium, right){
         }
         k++;
     }
-     // 2,3,4
+
+    console.log(i,j);
+    console.log("Between Merge: "+array);
     while(i<leftArraySize){
         array[k]=leftArray[i];
         i++;
         k++;
     }
-    // 2<2   // 5,6j 
     while(j<rightArraySize){
-        array[k]=rightArray[j]; // 2,3,4,5,6
+        array[k]=rightArray[j]; 
         j++;k++;
     }
+    console.log("After Merge: "+array);
 
 }
 
-const array=[7, 13, 2, 94, 3, 67, 43, 21];
+const array=[7, 13, 2, 94, 3];
 divide(array, 0, array.length-1);
-for(let i=0; i<array.length-1; i++){
-    console.log(array[i]);
-}
+// for(let i=0; i<array.length; i++){
+//     console.log(array[i]);
+// }

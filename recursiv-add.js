@@ -18,3 +18,7 @@ console.log(result);
 //         add(2)
 //             add(1)
 //                 add(0) - O(n)
+
+function print(msg){
+    console.log(msg); // O(1)
+}
