@@ -17,7 +17,7 @@ function countSort(...array){
     const count = Array.from({length: max});
 
     // Step 2: Store count of every character from input.
-    for(i=0;i<=10; i++){ // O(n)
+    for(i=0;i<=max; i++){ // O(n)
         count[i]=0;
     }
     console.log(count);
