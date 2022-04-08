@@ -21,7 +21,7 @@ function countSort(...array){
         count[i]=0;
     }
     console.log(count);
-
+    // [2, 7, 18, 9]
     for(i=0; i<length; i++){ // O(n)
         count[array[i]]++;
     }
@@ -31,6 +31,7 @@ function countSort(...array){
     for(i=1; i<=max; i++){
         count[i]=count[i]+count[i-1];
     }
+    
     console.log(count);
 
     // Step 4: Find correct index of input element in output array.
