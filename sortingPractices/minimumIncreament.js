@@ -16,6 +16,8 @@ function minIncreament(array){
     console.log(counter);
 }
 
+// T(n) => nlogn+n => O(nlogn)
+// S(n) => O(1)
 
 const array = [3,7,1,2,1,4]
 // o/p => 4   => [3,7,5,2,1,4]
