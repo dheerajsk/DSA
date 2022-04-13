@@ -1,5 +1,6 @@
 
 
+
 function binarySearch(array, key, left, right){
 
     if(left<=right){
@@ -28,4 +29,7 @@ function binarySearch(array, key, left, right){
 }
 
 binarySearch([4, 15, 32, 46, 78, 92, 104], 32, 0, 6);
+
+// T(n) => O(logn) // 4-> 2, 8-> 3, 16-> 4
+// S(n) => O(n)
 
