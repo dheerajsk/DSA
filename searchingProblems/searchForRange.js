@@ -2,8 +2,8 @@
 
 function searchRange(array, key){
     rangeResult=[-1, -1];
-    searchHelper(array, 0, array.length-1, key, rangeResult, true);
-    searchHelper(array, 0, array.length-1, key, rangeResult, false);
+    searchHelper(array, 0, array.length-1, key, rangeResult, true); // logn
+    searchHelper(array, 0, array.length-1, key, rangeResult, false); // logn
     console.log(rangeResult);
 }
 
@@ -33,3 +33,6 @@ function searchHelper(array, left, right, key, rangeResult, searchInLeft){
 }
 
 searchRange([2, 4, 4, 7, 7, 7, 7, 9, 11], 4);
+
+// T(n) => logn*logn || logn+logn => 2logn => O(logn)
+// S(n) => O(logn)
