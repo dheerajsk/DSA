@@ -1,21 +1,35 @@
 
 
 function searchRange(array, key){
-
-
+    rangeResult=[-1, -1];
+    searchHelper(array, 0, array.length-1, key, rangeResult, true);
+    searchHelper(array, 0, array.length-1, key, rangeResult, false);
+    console.log(rangeResult);
 }
 
-function first(array, left, right, key){
-    if(left<right){
+function searchHelper(array, left, right, key, rangeResult, searchInLeft){
 
-        const mid = Math.floor((left+right)/2);
-        if(key==array[mid] || key>array[mid]){
-            right=mid-1;
+    if(left>right) {return;}
+    let mid = Math.floor((left+right)/2);
+    if(array[mid]<key){
+        searchHelper(array, mid+1, right, key, rangeResult, searchInLeft);
+    }else if(array[mid]>key){
+        searchHelper(array, left, mid-1, key, rangeResult, searchInLeft);
+    }else{
+        if(searchInLeft){
+            if(mid==0 || array[mid-1]!=key){
+                rangeResult[0]=mid;
+            }else{
+                searchHelper(array, left, mid-1, key, rangeResult, searchInLeft);
+            }
         }else{
-            left = mid+1;
+            if(array[mid+1]!=key || mid==array.length-1){
+                rangeResult[1]=mid;
+            }else{
+                searchHelper(array, mid+1, right, key, rangeResult, searchInLeft);
+            }
         }
     }
 }
 
-
-searchRange([2, 4, 7, 7, 7, 7, 7, 9, 11], 7);
+searchRange([2, 4, 4, 7, 7, 7, 7, 9, 11], 4);
