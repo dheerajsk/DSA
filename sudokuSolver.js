@@ -75,3 +75,5 @@ const board=[
   ];
 
 console.log(solveSudoku(board));
+
+// T(n) = 9^(n*n) => 9^(81)=> O(1)
