@@ -60,3 +60,5 @@ function isValid(baord, row, col){
 }
 
 knightTour();
+
+// T(n) => 8^(n^2) => 8^64 => O(1)
